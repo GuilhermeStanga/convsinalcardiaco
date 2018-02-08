@@ -4,35 +4,35 @@
 #include <string.h>
 
 
-typedef struct Habilidade{//bloquinho das habilidades
-    char nome[20];
+typedef struct Habilidade {//bloco das habilidades de cada pokemon
     int forca;
+    char nome[20];
     struct Habilidade *proxim;
-}Habilidade;
+} Habilidade;
 
 
-typedef struct PokemonAtaque{// bloquinho pokemons
+typedef struct PokemonAtaque {// bloco dos pokemons
     char nome[20];
     struct Habilidade *habilidade;
     struct Habilidade *fim_habilidade;
     struct PokemonAtaque *prox;
-}PokemonAtaque;
+} PokemonAtaque;
 
-typedef struct{
+typedef struct {
     struct PokemonAtaque *Inicio;//lista do começo
     struct PokemonAtaque *Fim;
     int quantidade;
-}Pokemons;
+} Pokemons;
 
 Pokemons ListaPoke;
 
-void inicializapokemon(Pokemons *x){
+void inicializapokemon(Pokemons *x) {
     x->Inicio=NULL;
     x->Fim=NULL;
     x->quantidade=0;
 }
-
-void adicionarpokemon( char *pokeAtaque){
+ 
+void adicionarpokemon( char *pokeAtaque) {
 
     PokemonAtaque *newPoke = (PokemonAtaque*) malloc(sizeof(PokemonAtaque));
     strcpy(newPoke->nome,pokeAtaque);
